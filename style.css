@@ -1,0 +1,208 @@
+
+@font-face {
+
+  font-family: iransans;
+  src: url(font/font.ttf);
+
+}
+
+@font-face {
+
+  font-family: iransans2;
+  src: url(font/font2.ttf);
+
+}
+
+@font-face {
+
+  font-family: iransans3;
+  src: url(font/font3.ttf);
+
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: iransans2;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  color: white;
+  overflow-x: hidden;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* لودینگ */
+.loader-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.loader {
+  border: 8px solid #1b2735;
+  border-top: 8px solid #00ffc3;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  animation: spin 1.2s linear infinite;
+}
+
+.loading-text {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #00ffc3;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.div_col {
+  text-align: center;
+  margin-top: 5%;
+  padding: 0 15px;
+}
+
+.via {
+  font-size: min(70px, 12vw);
+  font-weight: bold;
+  background: linear-gradient(45deg, #00ffc3, #005aff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+}
+
+.continer {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  width: calc(100% - 30px);
+  max-width: 500px;
+  margin: 0 auto 30px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 255, 196, 0.3);
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 16px;
+  font-family: iransans2;
+}
+
+#list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.div_text {
+  background-color: rgba(0, 255, 196, 0.1);
+  border: 1px solid rgba(0, 255, 196, 0.3);
+  padding: 15px;
+  border-radius: 10px;
+  position: relative;
+  font-size: 16px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.text {
+  padding-right: 30px;
+}
+
+.text label {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 12px;
+  color: #b4ff39;
+}
+
+.text button {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  background: transparent;
+  border: none;
+  color: #ff0000;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* اسکرول بار */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #00ffc3;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ریسپانسیو */
+@media (max-width: 768px) {
+  .via {
+    font-size: min(50px, 10vw);
+  }
+
+  .input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .div_text {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .continer {
+    padding: 15px;
+  }
+
+  .text label {
+    font-size: 11px;
+  }
+
+  .text button {
+    font-size: 16px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .div_col {
+    margin-top: 15%;
+  }
+  
+  .text {
+    padding-right: 25px;
+  }
+}

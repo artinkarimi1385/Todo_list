@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title> TODO_ViaX </title>
+</head>
+<body>
+
+  <div id="loader" class="loader-wrapper">
+    <div class="loader"></div>
+    <p class="loading-text">در حال ورود به اپلیکیشن VIAX  ...</p>
+  </div>
+
+
+  <div class="main-content" style="display: none;">
+    <div class="div_col">
+      <h1 class="via">VIAX</h1>
+      <div class="continer">
+        <div class="div_input">
+          <input onkeypress="_.add(event)" id="in1" type="text" class="input" placeholder="چی تو ذهنت داری؟">
+        </div>
+
+
+        <div id="list" class="div_text">
+          <!-- <div class="text">
+       اولین پیام خود را بنویسید ...
+            <label for=""> </label>
+            <button></button>
+          </div> -->
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+<br><br>
+
+  <script src="js.js"> </script>
+
+
+  <script>
+
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+        document.querySelector(".main-content").style.display = "block";
+      }, 2200);
+    });
+  </script>
+</body>
+</html>
