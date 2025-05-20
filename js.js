@@ -1,4 +1,3 @@
-
 const _ = (() => {
     const state = {
       tasks: [],
@@ -14,18 +13,18 @@ const _ = (() => {
         }
       }
     };
-  
+
     const utils = {
-      formatTime: (d) => `${d.getHours()}:${d.getMinutes().toString().padStart(2,'0')}:${d.getSeconds().toString().padStart(2,'0')}`,
+      formatTime: (d) => `${d.getHours()}:${d.getMinutes().toString().padStart(2, '0')}:${d.getSeconds().toString().padStart(2, '0')}`,
       sanitize: (str) => str.trim().replace(/(<([^>]+)>)/gi, ""),
-      uid: () => Math.random().toString(36).substr(2,9)
+      uid: () => Math.random().toString(36).substr(2, 9)
     };
-  
+
     const storage = {
       get: (key) => JSON.parse(localStorage.getItem(key)) || [],
       set: (key, val) => localStorage.setItem(key, JSON.stringify(val))
     };
-  
+
     const render = {
       task: (task, date, id) => `
         <div class="div_text" data-id="${id}">
@@ -42,39 +41,46 @@ const _ = (() => {
           .join("");
       }
     };
-  
+
     const methods = {
       init: () => {
         state.tasks = storage.get(state.config.storageKeys.tasks);
         state.dates = storage.get(state.config.storageKeys.dates);
         render.all();
       },
-      add: (e) => {
-        if (e.code !== "Enter" || !state.dom.input.value.trim()) return;
-        
-        const task = utils.sanitize(state.dom.input.value);
+      add: () => {
+        const inputValue = state.dom.input.value.trim();
+        if (!inputValue) return;
+
+        const task = utils.sanitize(inputValue);
         state.tasks.push(task);
         state.dates.push(utils.formatTime(new Date()));
-        
+
         storage.set(state.config.storageKeys.tasks, state.tasks);
         storage.set(state.config.storageKeys.dates, state.dates);
-        
+
         state.dom.input.value = "";
         render.all();
       },
       delete: (id) => {
         state.tasks.splice(id, 1);
         state.dates.splice(id, 1);
-        
+
         storage.set(state.config.storageKeys.tasks, state.tasks);
         storage.set(state.config.storageKeys.dates, state.dates);
-        
+
         render.all();
       }
     };
-  
+
     return methods;
   })();
-  
+
   _.init();
-  document.getElementById("in1").addEventListener("keyup", _.add);
+
+  // این قسمت برای اینتر زدن روی همه دستگاه‌هاست (لپ‌تاپ و گوشی)
+  document.getElementById("in1").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      _.add();
+    }
+  });
